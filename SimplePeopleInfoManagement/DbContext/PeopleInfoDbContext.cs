@@ -1,5 +1,6 @@
 ﻿using System.Data.Common;
 using System.Data.Entity;
+using SimplePeopleInfoManagement.Entity;
 
 namespace SimplePeopleInfoManagement.DbContext
 {
@@ -29,5 +30,7 @@ namespace SimplePeopleInfoManagement.DbContext
             var initializer = new PeopleInfoDbInitializer(modelBuilder);
             Database.SetInitializer(initializer);
         }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Person> Persons { get; set; }
     }
 }

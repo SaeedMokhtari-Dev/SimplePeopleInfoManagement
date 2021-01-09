@@ -1,11 +1,13 @@
-﻿﻿namespace SimplePeopleInfoManagement
+﻿using System.ComponentModel;
+
+namespace SimplePeopleInfoManagement
 {
     partial class FormMain
     {
         /// <summary>
         /// Required designer variable.
         /// </summary>
-        private System.ComponentModel.IContainer components = null;
+        private IContainer components = null;
 
         /// <summary>
         /// Clean up any resources being used.
@@ -34,25 +36,25 @@
             this.panel_top = new System.Windows.Forms.Panel();
             this.panel_search = new System.Windows.Forms.Panel();
             this.advancedDataGridViewSearchToolBar_main = new Zuby.ADGV.AdvancedDataGridViewSearchToolBar();
-            this.label_total = new System.Windows.Forms.Label();
-            this.textBox_total = new System.Windows.Forms.TextBox();
-            this.panel_grid = new System.Windows.Forms.Panel();
-            this.advancedDataGridView_main = new Zuby.ADGV.AdvancedDataGridView();
-            this.panel_bottom = new System.Windows.Forms.Panel();
-            this.bindingSource_main = new System.Windows.Forms.BindingSource(this.components);
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.newToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.newCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label_total = new System.Windows.Forms.Label();
+            this.textBox_total = new System.Windows.Forms.TextBox();
+            this.panel_grid = new System.Windows.Forms.Panel();
+            this.advancedDataGridView_main = new Zuby.ADGV.AdvancedDataGridView();
+            this.panel_bottom = new System.Windows.Forms.Panel();
+            this.bindingSource_main = new System.Windows.Forms.BindingSource(this.components);
             this.panel_top.SuspendLayout();
             this.panel_search.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.panel_grid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize) (this.advancedDataGridView_main)).BeginInit();
             this.panel_bottom.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize) (this.bindingSource_main)).BeginInit();
-            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel_top
@@ -93,6 +95,56 @@
             this.advancedDataGridViewSearchToolBar_main.Search +=
                 new Zuby.ADGV.AdvancedDataGridViewSearchToolBarSearchEventHandler(this
                     .advancedDataGridViewSearchToolBar_main_Search);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {this.fileToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1045, 28);
+            this.menuStrip1.TabIndex = 11;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[]
+            {
+                this.newToolStripMenuItem, this.toolStripSeparator1, this.newCategoryToolStripMenuItem,
+                this.exitToolStripMenuItem
+            });
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // newToolStripMenuItem
+            // 
+            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
+            this.newToolStripMenuItem.ShortcutKeys =
+                ((System.Windows.Forms.Keys) ((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.newToolStripMenuItem.Size = new System.Drawing.Size(231, 26);
+            this.newToolStripMenuItem.Text = "New";
+            this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(228, 6);
+            // 
+            // newCategoryToolStripMenuItem
+            // 
+            this.newCategoryToolStripMenuItem.Name = "newCategoryToolStripMenuItem";
+            this.newCategoryToolStripMenuItem.ShortcutKeys =
+                ((System.Windows.Forms.Keys) ((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
+            this.newCategoryToolStripMenuItem.Size = new System.Drawing.Size(231, 26);
+            this.newCategoryToolStripMenuItem.Text = "New Category";
+            this.newCategoryToolStripMenuItem.Click += new System.EventHandler(this.newCategoryToolStripMenuItem_Click);
+            // 
+            // exitToolStripMenuItem
+            // 
+            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(231, 26);
+            this.exitToolStripMenuItem.Text = "Exit";
             // 
             // label_total
             // 
@@ -168,55 +220,6 @@
             this.bindingSource_main.ListChanged +=
                 new System.ComponentModel.ListChangedEventHandler(this.bindingSource_main_ListChanged);
             // 
-            // menuStrip1
-            // 
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {this.fileToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1045, 28);
-            this.menuStrip1.TabIndex = 11;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // fileToolStripMenuItem
-            // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[]
-            {
-                this.newToolStripMenuItem, this.toolStripSeparator1, this.newCategoryToolStripMenuItem,
-                this.exitToolStripMenuItem
-            });
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
-            this.fileToolStripMenuItem.Text = "File";
-            // 
-            // newToolStripMenuItem
-            // 
-            this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.ShortcutKeys =
-                ((System.Windows.Forms.Keys) ((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.newToolStripMenuItem.Size = new System.Drawing.Size(231, 26);
-            this.newToolStripMenuItem.Text = "New";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(228, 6);
-            // 
-            // newCategoryToolStripMenuItem
-            // 
-            this.newCategoryToolStripMenuItem.Name = "newCategoryToolStripMenuItem";
-            this.newCategoryToolStripMenuItem.ShortcutKeys =
-                ((System.Windows.Forms.Keys) ((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
-            this.newCategoryToolStripMenuItem.Size = new System.Drawing.Size(231, 26);
-            this.newCategoryToolStripMenuItem.Text = "New Category";
-            this.newCategoryToolStripMenuItem.Click += new System.EventHandler(this.newCategoryToolStripMenuItem_Click);
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(231, 26);
-            this.exitToolStripMenuItem.Text = "Exit";
-            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -234,13 +237,13 @@
             this.panel_top.PerformLayout();
             this.panel_search.ResumeLayout(false);
             this.panel_search.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.panel_grid.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize) (this.advancedDataGridView_main)).EndInit();
             this.panel_bottom.ResumeLayout(false);
             this.panel_bottom.PerformLayout();
             ((System.ComponentModel.ISupportInitialize) (this.bindingSource_main)).EndInit();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
         }
 

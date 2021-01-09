@@ -18,7 +18,6 @@ namespace SimplePeopleInfoManagement
 
         private bool _testtranslations = false;
         private bool _testtranslationsFromFile = false;
-
         private object[][] _inrows = new object[][] { };
 
         public FormMain()
@@ -241,7 +240,20 @@ namespace SimplePeopleInfoManagement
 
         private void newCategoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            throw new System.NotImplementedException();
+            CategoryForm categoryForm = new CategoryForm();
+            if(categoryForm.ShowDialog() == DialogResult.OK)
+            {
+                //LoadData();
+            }
+        }
+
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            PersonForm personForm = new PersonForm();
+            if(personForm.ShowDialog() == DialogResult.OK)
+            {
+                //LoadData();
+            }
         }
     }
 }
