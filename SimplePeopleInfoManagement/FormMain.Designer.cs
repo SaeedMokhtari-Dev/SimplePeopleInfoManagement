@@ -31,8 +31,7 @@ namespace SimplePeopleInfoManagement
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 =
-                new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel_top = new System.Windows.Forms.Panel();
             this.panel_search = new System.Windows.Forms.Panel();
             this.advancedDataGridViewSearchToolBar_main = new Zuby.ADGV.AdvancedDataGridViewSearchToolBar();
@@ -52,9 +51,9 @@ namespace SimplePeopleInfoManagement
             this.panel_search.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.panel_grid.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize) (this.advancedDataGridView_main)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.advancedDataGridView_main)).BeginInit();
             this.panel_bottom.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize) (this.bindingSource_main)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_main)).BeginInit();
             this.SuspendLayout();
             // 
             // panel_top
@@ -63,43 +62,42 @@ namespace SimplePeopleInfoManagement
             this.panel_top.Controls.Add(this.menuStrip1);
             this.panel_top.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_top.Location = new System.Drawing.Point(0, 0);
-            this.panel_top.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel_top.Margin = new System.Windows.Forms.Padding(4);
             this.panel_top.Name = "panel_top";
-            this.panel_top.Size = new System.Drawing.Size(1045, 116);
+            this.panel_top.Size = new System.Drawing.Size(1045, 61);
             this.panel_top.TabIndex = 0;
             // 
             // panel_search
             // 
             this.panel_search.Controls.Add(this.advancedDataGridViewSearchToolBar_main);
             this.panel_search.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel_search.Location = new System.Drawing.Point(0, 74);
-            this.panel_search.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel_search.Location = new System.Drawing.Point(0, 27);
+            this.panel_search.Margin = new System.Windows.Forms.Padding(4);
             this.panel_search.Name = "panel_search";
-            this.panel_search.Size = new System.Drawing.Size(1045, 42);
+            this.panel_search.Size = new System.Drawing.Size(1045, 34);
             this.panel_search.TabIndex = 10;
             // 
             // advancedDataGridViewSearchToolBar_main
             // 
             this.advancedDataGridViewSearchToolBar_main.AllowMerge = false;
+            this.advancedDataGridViewSearchToolBar_main.Dock = System.Windows.Forms.DockStyle.Fill;
             this.advancedDataGridViewSearchToolBar_main.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
             this.advancedDataGridViewSearchToolBar_main.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.advancedDataGridViewSearchToolBar_main.Location = new System.Drawing.Point(0, 0);
-            this.advancedDataGridViewSearchToolBar_main.MaximumSize = new System.Drawing.Size(0, 41);
-            this.advancedDataGridViewSearchToolBar_main.MinimumSize = new System.Drawing.Size(0, 41);
+            this.advancedDataGridViewSearchToolBar_main.MaximumSize = new System.Drawing.Size(0, 33);
+            this.advancedDataGridViewSearchToolBar_main.MinimumSize = new System.Drawing.Size(0, 33);
             this.advancedDataGridViewSearchToolBar_main.Name = "advancedDataGridViewSearchToolBar_main";
-            this.advancedDataGridViewSearchToolBar_main.RenderMode =
-                System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.advancedDataGridViewSearchToolBar_main.Size = new System.Drawing.Size(1045, 41);
+            this.advancedDataGridViewSearchToolBar_main.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.advancedDataGridViewSearchToolBar_main.Size = new System.Drawing.Size(1045, 33);
             this.advancedDataGridViewSearchToolBar_main.TabIndex = 0;
             this.advancedDataGridViewSearchToolBar_main.Text = "advancedDataGridViewSearchToolBar_main";
-            this.advancedDataGridViewSearchToolBar_main.Search +=
-                new Zuby.ADGV.AdvancedDataGridViewSearchToolBarSearchEventHandler(this
-                    .advancedDataGridViewSearchToolBar_main_Search);
+            this.advancedDataGridViewSearchToolBar_main.Search += new Zuby.ADGV.AdvancedDataGridViewSearchToolBarSearchEventHandler(this.advancedDataGridViewSearchToolBar_main_Search);
             // 
             // menuStrip1
             // 
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {this.fileToolStripMenuItem});
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1045, 28);
@@ -108,11 +106,11 @@ namespace SimplePeopleInfoManagement
             // 
             // fileToolStripMenuItem
             // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[]
-            {
-                this.newToolStripMenuItem, this.toolStripSeparator1, this.newCategoryToolStripMenuItem,
-                this.exitToolStripMenuItem
-            });
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.newToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.newCategoryToolStripMenuItem,
+            this.exitToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
             this.fileToolStripMenuItem.Size = new System.Drawing.Size(44, 24);
             this.fileToolStripMenuItem.Text = "File";
@@ -120,8 +118,7 @@ namespace SimplePeopleInfoManagement
             // newToolStripMenuItem
             // 
             this.newToolStripMenuItem.Name = "newToolStripMenuItem";
-            this.newToolStripMenuItem.ShortcutKeys =
-                ((System.Windows.Forms.Keys) ((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.newToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
             this.newToolStripMenuItem.Size = new System.Drawing.Size(231, 26);
             this.newToolStripMenuItem.Text = "New";
             this.newToolStripMenuItem.Click += new System.EventHandler(this.newToolStripMenuItem_Click);
@@ -134,8 +131,7 @@ namespace SimplePeopleInfoManagement
             // newCategoryToolStripMenuItem
             // 
             this.newCategoryToolStripMenuItem.Name = "newCategoryToolStripMenuItem";
-            this.newCategoryToolStripMenuItem.ShortcutKeys =
-                ((System.Windows.Forms.Keys) ((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
+            this.newCategoryToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.D)));
             this.newCategoryToolStripMenuItem.Size = new System.Drawing.Size(231, 26);
             this.newCategoryToolStripMenuItem.Text = "New Category";
             this.newCategoryToolStripMenuItem.Click += new System.EventHandler(this.newCategoryToolStripMenuItem_Click);
@@ -149,20 +145,20 @@ namespace SimplePeopleInfoManagement
             // label_total
             // 
             this.label_total.AutoSize = true;
-            this.label_total.Location = new System.Drawing.Point(16, 19);
+            this.label_total.Location = new System.Drawing.Point(16, 15);
             this.label_total.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label_total.Name = "label_total";
-            this.label_total.Size = new System.Drawing.Size(80, 20);
+            this.label_total.Size = new System.Drawing.Size(77, 17);
             this.label_total.TabIndex = 16;
             this.label_total.Text = "Total rows:";
             // 
             // textBox_total
             // 
-            this.textBox_total.Location = new System.Drawing.Point(103, 14);
-            this.textBox_total.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.textBox_total.Location = new System.Drawing.Point(103, 11);
+            this.textBox_total.Margin = new System.Windows.Forms.Padding(4);
             this.textBox_total.Name = "textBox_total";
             this.textBox_total.ReadOnly = true;
-            this.textBox_total.Size = new System.Drawing.Size(92, 27);
+            this.textBox_total.Size = new System.Drawing.Size(92, 22);
             this.textBox_total.TabIndex = 15;
             // 
             // panel_grid
@@ -170,66 +166,59 @@ namespace SimplePeopleInfoManagement
             this.panel_grid.Controls.Add(this.advancedDataGridView_main);
             this.panel_grid.Controls.Add(this.panel_bottom);
             this.panel_grid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_grid.Location = new System.Drawing.Point(0, 116);
-            this.panel_grid.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel_grid.Location = new System.Drawing.Point(0, 61);
+            this.panel_grid.Margin = new System.Windows.Forms.Padding(4);
             this.panel_grid.Name = "panel_grid";
-            this.panel_grid.Size = new System.Drawing.Size(1045, 593);
+            this.panel_grid.Size = new System.Drawing.Size(1045, 506);
             this.panel_grid.TabIndex = 1;
             // 
             // advancedDataGridView_main
             // 
             this.advancedDataGridView_main.AllowUserToAddRows = false;
             this.advancedDataGridView_main.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int) (((byte) (224)))),
-                ((int) (((byte) (224)))), ((int) (((byte) (224)))));
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.advancedDataGridView_main.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.advancedDataGridView_main.AutoSizeColumnsMode =
-                System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.advancedDataGridView_main.ColumnHeadersHeightSizeMode =
-                System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.advancedDataGridView_main.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.advancedDataGridView_main.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.advancedDataGridView_main.Dock = System.Windows.Forms.DockStyle.Fill;
             this.advancedDataGridView_main.FilterAndSortEnabled = true;
             this.advancedDataGridView_main.Location = new System.Drawing.Point(0, 0);
-            this.advancedDataGridView_main.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.advancedDataGridView_main.Margin = new System.Windows.Forms.Padding(4);
             this.advancedDataGridView_main.Name = "advancedDataGridView_main";
             this.advancedDataGridView_main.ReadOnly = true;
             this.advancedDataGridView_main.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.advancedDataGridView_main.RowHeadersVisible = false;
-            this.advancedDataGridView_main.Size = new System.Drawing.Size(1045, 541);
+            this.advancedDataGridView_main.Size = new System.Drawing.Size(1045, 464);
             this.advancedDataGridView_main.TabIndex = 0;
-            this.advancedDataGridView_main.SortStringChanged +=
-                new System.EventHandler<Zuby.ADGV.AdvancedDataGridView.SortEventArgs>(
-                    this.advancedDataGridView_main_SortStringChanged);
-            this.advancedDataGridView_main.FilterStringChanged +=
-                new System.EventHandler<Zuby.ADGV.AdvancedDataGridView.FilterEventArgs>(
-                    this.advancedDataGridView_main_FilterStringChanged);
+            this.advancedDataGridView_main.SortStringChanged += new System.EventHandler<Zuby.ADGV.AdvancedDataGridView.SortEventArgs>(this.advancedDataGridView_main_SortStringChanged);
+            this.advancedDataGridView_main.FilterStringChanged += new System.EventHandler<Zuby.ADGV.AdvancedDataGridView.FilterEventArgs>(this.advancedDataGridView_main_FilterStringChanged);
+            this.advancedDataGridView_main.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.advancedDataGridView_main_CellClick);
             // 
             // panel_bottom
             // 
             this.panel_bottom.Controls.Add(this.textBox_total);
             this.panel_bottom.Controls.Add(this.label_total);
             this.panel_bottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel_bottom.Location = new System.Drawing.Point(0, 541);
-            this.panel_bottom.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.panel_bottom.Location = new System.Drawing.Point(0, 464);
+            this.panel_bottom.Margin = new System.Windows.Forms.Padding(4);
             this.panel_bottom.Name = "panel_bottom";
-            this.panel_bottom.Size = new System.Drawing.Size(1045, 52);
+            this.panel_bottom.Size = new System.Drawing.Size(1045, 42);
             this.panel_bottom.TabIndex = 2;
             // 
             // bindingSource_main
             // 
-            this.bindingSource_main.ListChanged +=
-                new System.ComponentModel.ListChangedEventHandler(this.bindingSource_main_ListChanged);
+            this.bindingSource_main.ListChanged += new System.ComponentModel.ListChangedEventHandler(this.bindingSource_main_ListChanged);
             // 
             // FormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1045, 709);
+            this.ClientSize = new System.Drawing.Size(1045, 567);
             this.Controls.Add(this.panel_grid);
             this.Controls.Add(this.panel_top);
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.MinimumSize = new System.Drawing.Size(1061, 745);
+            this.Margin = new System.Windows.Forms.Padding(4);
+            this.MinimumSize = new System.Drawing.Size(1061, 605);
             this.Name = "FormMain";
             this.Text = "AdvancedDataGridView Sample";
             this.Load += new System.EventHandler(this.FormMain_Load);
@@ -240,11 +229,12 @@ namespace SimplePeopleInfoManagement
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel_grid.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize) (this.advancedDataGridView_main)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.advancedDataGridView_main)).EndInit();
             this.panel_bottom.ResumeLayout(false);
             this.panel_bottom.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize) (this.bindingSource_main)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_main)).EndInit();
             this.ResumeLayout(false);
+
         }
 
         #endregion

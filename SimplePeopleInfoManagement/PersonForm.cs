@@ -6,6 +6,7 @@ using SimplePeopleInfoManagement.Entity;
 using System.Data.Common;
 using System.Data.SQLite;
 using System.IO;
+using System.Data.Entity;
 
 namespace SimplePeopleInfoManagement
 {
@@ -14,13 +15,21 @@ namespace SimplePeopleInfoManagement
         //private PeopleInfoDbContext _context;
         public PersonForm()
         {
+            
             //  _context = ConnectionHelper.getDbConntext();
             InitializeComponent();
+            getCategories();
+        }
+        public PersonForm(int id)
+        {
+            InitializeComponent();
+            getCategories();
+            loadPersonAndSetToForm(id);
         }
 
         private void PersonForm_Load(object sender, EventArgs e)
         {
-            getCategories();
+            
         }
         private void getCategories()
         {
@@ -93,11 +102,18 @@ namespace SimplePeopleInfoManagement
                             Description = description_txt.Text,
                             CreatedUtc = DateTime.Now
                         };
-
-                        person = _context.Persons.Add(person);
+                        if (string.IsNullOrEmpty(id_txt.Text))
+                        {  
+                            person = _context.People.Add(person);
+                            Directory.CreateDirectory($"PersonData/{person.Id}");
+                        }
+                        else
+                        {
+                            person.Id = Convert.ToInt32(id_txt.Text);
+                            _context.People.Attach(person);
+                            _context.Entry(person).State = EntityState.Modified;
+                        }
                         _context.SaveChanges();
-
-                        Directory.CreateDirectory($"PersonData/{person.Id}");
                     }
                     catch (Exception ex)
                     {
@@ -113,6 +129,53 @@ namespace SimplePeopleInfoManagement
         {
             InsertNewPerson();
         }
+
+        private void loadPersonAndSetToForm(int id)
+        {
+            using (DbConnection connection = new SQLiteConnection(@"data source=.\db\PeopleInfoDb\PeopleInfoDb.sqlite; Foreign Key Constraints=On;"))
+            {
+                // This is important! Else the in memory database will not work.
+                connection.Open();
+
+                using (var _context = new PeopleInfoDbContext(connection, true))
+                {
+                    try
+                    {
+                        var person = _context.People.Find(id);
+                        if (person == null)
+                            throw new Exception("Person Not Found");
+
+                        id_txt.Text = person.Id.ToString();
+                        //category_group.SelectedItem = new ComboboxItem(person.Category.Title, person.CategoryId);
+                        //category_group.SelectedIndex = category_group.Items.IndexOf(new ComboboxItem(person.Category.Title, person.CategoryId));
+                        category_group.SelectedIndex = category_group.FindString(person.Category.Title);
+                        firstName_txt.Text = person.FirstName;
+                        lastName_txt.Text = person.LastName;
+                        fatherName_txt.Text = person.FatherName;
+                        birthDate_txt.Text = person.BirthDate;                        
+                        nationalId_txt.Text = person.NationalId;
+                        nationalSeries_txt.Text = person.NationalSeries;
+                        mobile_txt.Text = person.Mobile;
+                        phoneNumber_txt.Text = person.PhoneNumber;
+                        address_txt.Text = person.Address;
+                        manSex_radio.Checked = person.Sex == "مرد";
+                        womanSex_radio.Checked = person.Sex == "زن";
+                        telegram_txt.Text = person.Telegram;
+                        instagram_txt.Text = person.Instagram;
+                        email_txt.Text = person.Email;
+                        job_txt.Text = person.Job;
+                        qualification_txt.Text = person.Qualification;
+                        description_txt.Text = person.Description;
+
+                    }
+                    catch (Exception ex)
+                    {
+                        throw ex;
+                    }
+
+                }
+            }
+        }
     }
     public class ComboboxItem
     {
@@ -120,6 +183,13 @@ namespace SimplePeopleInfoManagement
         {
 
         }
+
+        public ComboboxItem(string text, object value)
+        {
+            Text = text;
+            Value = value;
+        }
+
         public string Text { get; set; }
         public object Value { get; set; }
 

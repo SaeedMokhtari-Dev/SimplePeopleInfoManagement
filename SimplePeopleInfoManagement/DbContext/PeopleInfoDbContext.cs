@@ -31,6 +31,6 @@ namespace SimplePeopleInfoManagement.DbContext
             Database.SetInitializer(initializer);
         }
         public DbSet<Category> Categories { get; set; }
-        public DbSet<Person> Persons { get; set; }
+        public DbSet<Person> People { get; set; }
     }
 }

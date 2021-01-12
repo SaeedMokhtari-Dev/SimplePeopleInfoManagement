@@ -1,13 +1,17 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Windows.Forms;
+using Zuby.ADGV;
+using System.Data.Common;
+using System.Data.SQLite;
+using SimplePeopleInfoManagement.DbContext;
 using System.Drawing;
 using System.IO;
-using System.Windows.Forms;
+using System.Diagnostics;
 using SimplePeopleInfoManagement.Entity;
-using SimplePeopleInfoManagement.Models;
-using Zuby.ADGV;
 
 namespace SimplePeopleInfoManagement
 {
@@ -92,6 +96,15 @@ namespace SimplePeopleInfoManagement
             _dataTable.Columns.Add("PhoneNumber", typeof(string));
             _dataTable.Columns.Add("Email", typeof(string));
             _dataTable.Columns.Add("Category", typeof(string));
+            _dataTable.Columns.Add("Address", typeof(string));
+            _dataTable.Columns.Add("Sex", typeof(string));
+            _dataTable.Columns.Add("Telegram", typeof(string));
+            _dataTable.Columns.Add("Instagram", typeof(string));
+            _dataTable.Columns.Add("Job", typeof(string));
+            _dataTable.Columns.Add("Qualification", typeof(string));
+            _dataTable.Columns.Add("Documents", typeof(Bitmap));
+            _dataTable.Columns.Add("Edit", typeof(Bitmap));
+            _dataTable.Columns.Add("Delete", typeof(Bitmap));
 
             bindingSource_main.DataMember = _dataTable.TableName;
 
@@ -106,18 +119,58 @@ namespace SimplePeopleInfoManagement
                 FirstName = "سعید",
                 LastName = "مختاری"
             });*/
-            object[] newrow = new object[] {
-                22,
-                "saeed",
-                "mokhtari"
-            };
-            _dataTable.Rows.Add(newrow);
-        }
 
+        }
+        private void getPeople()
+        {
+            using (DbConnection connection = new SQLiteConnection(@"data source=.\db\PeopleInfoDb\PeopleInfoDb.sqlite; Foreign Key Constraints=On;"))
+            {
+                // This is important! Else the in memory database will not work.
+                connection.Open();
+
+                using (var _context = new PeopleInfoDbContext(connection, true))
+                {
+                    // ReSharper disable once UnusedVariable
+                    var people = _context.People.ToList();
+                    _dataTable.Clear();
+
+                    foreach (var item in people)
+                    {
+                        object[] newrow = new object[]
+                        {
+                            item.Id,
+                            item.FirstName,
+                            item.LastName,
+                            item.FatherName,
+                            item.BirthDate,
+                            item.NationalId,
+                            item.NationalSeries,
+                            item.Mobile,
+                            item.PhoneNumber,
+                            item.Email,
+                            item.Category?.Title,
+                            item.Address,
+                            item.Sex,
+                            item.Telegram,
+                            item.Instagram,
+                            item.Job,
+                            item.Qualification,
+                            Image.FromFile(Path.Combine(Application.StartupPath, "Images", "docs.png")),
+                            Image.FromFile(Path.Combine(Application.StartupPath, "Images", "edit.png")),
+                            Image.FromFile(Path.Combine(Application.StartupPath, "Images", "delete.png")),
+                    };
+                        _dataTable.Rows.Add(newrow);
+                    }
+
+                }
+            }
+
+        }
         private void FormMain_Load(object sender, EventArgs e)
         {
             //add test data to bindsource
-            AddTestData();
+            //AddTestData();
+            getPeople();
 
             //setup datagridview
             advancedDataGridView_main.SetFilterAndSortEnabled(advancedDataGridView_main.Columns["Id"], true);
@@ -130,7 +183,7 @@ namespace SimplePeopleInfoManagement
             advancedDataGridView_main.SetFilterChecklistEnabled(advancedDataGridView_main.Columns["Mobile"], true);
             advancedDataGridView_main.SetFilterChecklistEnabled(advancedDataGridView_main.Columns["Address"], true);
             advancedDataGridView_main.SetFilterChecklistEnabled(advancedDataGridView_main.Columns["CategoryId"], true);
-            
+
 
 
             foreach (DataGridViewColumn column in advancedDataGridView_main.Columns)
@@ -241,19 +294,79 @@ namespace SimplePeopleInfoManagement
         private void newCategoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
             CategoryForm categoryForm = new CategoryForm();
-            if(categoryForm.ShowDialog() == DialogResult.OK)
+            if (categoryForm.ShowDialog() == DialogResult.OK)
             {
-                //LoadData();
+                getPeople();
             }
         }
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
         {
             PersonForm personForm = new PersonForm();
-            if(personForm.ShowDialog() == DialogResult.OK)
+            if (personForm.ShowDialog() == DialogResult.OK)
             {
-                //LoadData();
+                getPeople();
             }
+        }
+
+        private void advancedDataGridView_main_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int id = Convert.ToInt32(advancedDataGridView_main.Rows[e.RowIndex].Cells[0].Value);
+            switch (e.ColumnIndex)
+            {
+                case 17:
+                    Process.Start("explorer.exe", $"{Application.StartupPath}\\PersonData\\{id}");
+                    break;
+                case 18:
+                    PersonForm personForm = new PersonForm(id);
+                    if(personForm.ShowDialog() == DialogResult.OK)
+                    {
+                        getPeople();
+                    }
+                    break;
+                case 19:
+                    var confirmResult = MessageBox.Show("برای حذف مطمئنید؟",
+                                     "Confirm Delete!!",
+                                     MessageBoxButtons.YesNo);
+                    if (confirmResult == DialogResult.Yes)
+                    {
+                        try
+                        {
+                            deletePerson(id);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
+                    }
+                    break;
+            }
+        }
+        private void deletePerson(int id)
+        {
+            try
+            {
+                using (DbConnection connection = new SQLiteConnection(@"data source=.\db\PeopleInfoDb\PeopleInfoDb.sqlite; Foreign Key Constraints=On;"))
+                {
+                    // This is important! Else the in memory database will not work.
+                    connection.Open();
+
+                    using (var _context = new PeopleInfoDbContext(connection, true))
+                    {
+                        Person person = _context.People.Find(id);
+                        if (person == null)
+                            throw new Exception("PersonId is not valid");
+
+                        _context.People.Remove(person);
+                        _context.SaveChanges();
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
         }
     }
 }
