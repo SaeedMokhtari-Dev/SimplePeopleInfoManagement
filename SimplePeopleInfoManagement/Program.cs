@@ -1,5 +1,10 @@
-﻿using System;
+﻿using SimplePeopleInfoManagement.DbContext;
+using SimplePeopleInfoManagement.Entity;
+using System;
 using System.Configuration;
+using System.Data.Common;
+using System.Data.SQLite;
+using System.IO;
 using System.Windows.Forms;
 
 namespace SimplePeopleInfoManagement
@@ -39,6 +44,27 @@ namespace SimplePeopleInfoManagement
             FormMain formMain = new FormMain();
             if (HighDPIEnabled)
                 formMain.AutoScaleMode = AutoScaleMode.Dpi;
+
+            if (!File.Exists(@".\db\db.sqlite"))
+            {
+                using (DbConnection connection = new SQLiteConnection(ConnectionHelper.ConnectionString))
+                {
+                    using (var _context = new PeopleInfoDbContext(connection, true))
+                    {
+                        // ReSharper disable once UnusedVariable
+                        Category category = new Category
+                        {
+                            Title = "فامیل",
+                            Description = string.Empty,
+                            CreatedUtc = DateTime.Now
+                        };
+
+                        _context.Categories.Add(category);
+                        _context.SaveChanges();
+
+                    }
+                }
+            }
             Application.Run(formMain);
         }
     }

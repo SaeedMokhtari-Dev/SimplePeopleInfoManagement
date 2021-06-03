@@ -28,7 +28,7 @@ namespace SimplePeopleInfoManagement
 
         private void InsertNewCategory()
         {
-            using (DbConnection connection = new SQLiteConnection(@"data source=.\db\PeopleInfoDb\PeopleInfoDb.sqlite; Foreign Key Constraints=On;"))
+            using (DbConnection connection = new SQLiteConnection(ConnectionHelper.ConnectionString))
             {
                 // This is important! Else the in memory database will not work.
                 connection.Open();

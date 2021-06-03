@@ -33,7 +33,7 @@ namespace SimplePeopleInfoManagement
         }
         private void getCategories()
         {
-            using (DbConnection connection = new SQLiteConnection(@"data source=.\db\PeopleInfoDb\PeopleInfoDb.sqlite; Foreign Key Constraints=On;"))
+            using (DbConnection connection = new SQLiteConnection(ConnectionHelper.ConnectionString))
             {
                 // This is important! Else the in memory database will not work.
                 connection.Open();
@@ -71,7 +71,7 @@ namespace SimplePeopleInfoManagement
         }
         private void InsertNewPerson()
         {
-            using (DbConnection connection = new SQLiteConnection(@"data source=.\db\PeopleInfoDb\PeopleInfoDb.sqlite; Foreign Key Constraints=On;"))
+            using (DbConnection connection = new SQLiteConnection(ConnectionHelper.ConnectionString))
             {
                 // This is important! Else the in memory database will not work.
                 connection.Open();
@@ -105,7 +105,6 @@ namespace SimplePeopleInfoManagement
                         if (string.IsNullOrEmpty(id_txt.Text))
                         {  
                             person = _context.People.Add(person);
-                            Directory.CreateDirectory($"PersonData/{person.Id}");
                         }
                         else
                         {
@@ -114,6 +113,8 @@ namespace SimplePeopleInfoManagement
                             _context.Entry(person).State = EntityState.Modified;
                         }
                         _context.SaveChanges();
+                        if(!Directory.Exists($"PersonData/{person.Id}"))
+                            Directory.CreateDirectory($"PersonData/{person.Id}");
                     }
                     catch (Exception ex)
                     {
@@ -132,7 +133,7 @@ namespace SimplePeopleInfoManagement
 
         private void loadPersonAndSetToForm(int id)
         {
-            using (DbConnection connection = new SQLiteConnection(@"data source=.\db\PeopleInfoDb\PeopleInfoDb.sqlite; Foreign Key Constraints=On;"))
+            using (DbConnection connection = new SQLiteConnection(ConnectionHelper.ConnectionString))
             {
                 // This is important! Else the in memory database will not work.
                 connection.Open();

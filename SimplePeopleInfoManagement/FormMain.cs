@@ -123,7 +123,7 @@ namespace SimplePeopleInfoManagement
         }
         private void getPeople()
         {
-            using (DbConnection connection = new SQLiteConnection(@"data source=.\db\PeopleInfoDb\PeopleInfoDb.sqlite; Foreign Key Constraints=On;"))
+            using (DbConnection connection = new SQLiteConnection(ConnectionHelper.ConnectionString))
             {
                 // This is important! Else the in memory database will not work.
                 connection.Open();
@@ -333,6 +333,7 @@ namespace SimplePeopleInfoManagement
                         try
                         {
                             deletePerson(id);
+                            getPeople();
                         }
                         catch (Exception ex)
                         {
@@ -346,7 +347,7 @@ namespace SimplePeopleInfoManagement
         {
             try
             {
-                using (DbConnection connection = new SQLiteConnection(@"data source=.\db\PeopleInfoDb\PeopleInfoDb.sqlite; Foreign Key Constraints=On;"))
+                using (DbConnection connection = new SQLiteConnection(ConnectionHelper.ConnectionString))
                 {
                     // This is important! Else the in memory database will not work.
                     connection.Open();
